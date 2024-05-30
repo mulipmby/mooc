@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Awesome! You got {{ score }} points out of 4</h1>
+        <h2>Participate in the lottery</h2>
+        <form method="post" action="{% url 'raffle' %}">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <button type="submit">Participate</button>
+        </form>
+
+    </body>
+</html>

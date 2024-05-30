@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mathematics exam</title>
+    <script>
+        let timeLeft = 120;
+        function startTimer() {
+            let timerElement = document.getElementById("timer");
+            let timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    window.location.href = "{% url 'timedout' %}";
+                } else {
+                    timeLeft--;
+                    let minutes = Math.floor(timeLeft / 60);
+                    let seconds = timeLeft % 60;
+                    timerElement.textContent = minutes + ":" + (seconds < 10 ? "0" + seconds : seconds);
+                }
+            }, 1000);
+        }
+        window.onload = startTimer;
+    </script>
+</head>
+<body>
+    <h1>Mathematics</h1>
+    <div>
+        <p>Time left: <span id="timer">2:00</span></p>
+    </div>
+    <form method="post">
+        <p>Question 1: 1 + 1 = ?</p>
+        <input type="number" name="answer1" value="0">       
+        <p>Question 2: 2 + 2 = ?</p>
+        <input type="number" name="answer2" value="0">
+        <p>Question 3: 2 / 2 = ?</p>
+        <input type="number" name="answer3" value="0">     
+        <p>Question 4: 5 * 3 = ?</p>
+        <input type="number" name="answer4" value="0">     
+        <button type="submit">Send answers</button>
+    </form>
+</body>
+</html>
